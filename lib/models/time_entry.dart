@@ -5,6 +5,7 @@ class TimeEntry {
   final double totalTime;
   final DateTime date;
   final String notes;
+
   TimeEntry({
     required this.id,
     required this.projectId,
@@ -13,4 +14,28 @@ class TimeEntry {
     required this.date,
     required this.notes,
   });
+
+  // Convert a JSON object to an Expense instance
+  factory TimeEntry.fromJson(Map<String, dynamic> json) {
+    return TimeEntry(
+      id: json['id'],
+      projectId: json['projectId'],
+      taskId: json['taskId'],
+      totalTime: json['totalTime'],
+      date: DateTime.parse(json['date']),
+      notes: json['notes'],      
+    );
+  }
+
+  // Convert an Expense instance to a JSON object
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'projectId': projectId,
+      'taskId': taskId,
+      'totalTime': totalTime,
+      'date': date.toIso8601String(),
+      'notes': notes,      
+    };
+  }
 }
