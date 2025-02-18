@@ -47,7 +47,7 @@ class _AddTimeEntryScreenState extends State<AddTimeEntryScreen> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            buildTextField(_totalTimeController, 'Total Time',
+            buildTextField(_totalTimeController, 'Total Time (hours)',
                 TextInputType.numberWithOptions(decimal: true)),
             buildTextField(_notesController, 'notes', TextInputType.text),
             buildDateField(_selectedDate),
