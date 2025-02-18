@@ -31,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Time Entries"),
-        backgroundColor: Colors.deepPurple[800],
+        title: Text("Time Tracking"),
+        backgroundColor: const Color.fromARGB(40, 53, 130, 117),
         foregroundColor: Colors.white,
         bottom: TabBar(
           controller: _tabController,

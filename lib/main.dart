@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TimeEntryProvider(localStorage)),
       ],
       child: MaterialApp(
-        title: 'Time Entries',
+        title: 'Time Tracking',
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
