@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen>
       builder: (context, provider, child) {
         if (provider.entries.isEmpty) {
           return Center(
-            child: Text("Click the + button to record Time Entrys.",
+            child: Text("Click the + button to record Time Entries.",
                 style: TextStyle(color: Colors.grey[600], fontSize: 18)),
           );
         }
