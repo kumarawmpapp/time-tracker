@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:time_tracker/theme/theme.dart';
 import '../models/project.dart';
 import '../providers/time_entry_provider.dart';
 import '../widgets/add_project_dialog.dart';
@@ -11,7 +12,7 @@ class ProjectManagementScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Manage Projects"),
-        backgroundColor: Colors.deepPurple, // Themed color similar to your inspirations
+        backgroundColor: AppTheme.primaryColor, // Themed color similar to your inspirations
         foregroundColor: Colors.white,
       ),
       body: Consumer<TimeEntryProvider>(
@@ -34,6 +35,7 @@ class ProjectManagementScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: AppTheme.accentColor, // Use theme color
         onPressed: () {
           showDialog(
             context: context,

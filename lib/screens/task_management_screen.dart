@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:time_tracker/theme/theme.dart';
 import '../providers/time_entry_provider.dart';
 import '../widgets/add_task_dialog.dart';
 
@@ -9,7 +10,7 @@ class TaskManagementScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Manage Tasks"),
-        backgroundColor: Colors.deepPurple, // Themed color similar to your inspirations
+        backgroundColor: AppTheme.primaryColor, // Themed color similar to your inspirations
         foregroundColor: Colors.white,
       ),
       body: Consumer<TimeEntryProvider>(
@@ -33,6 +34,7 @@ class TaskManagementScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: AppTheme.accentColor, // Use theme color
         onPressed: () {
           showDialog(
             context: context,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:time_tracker/theme/theme.dart';
 import '../models/time_entry.dart';
 import '../providers/time_entry_provider.dart';
 import '../widgets/add_project_dialog.dart';
@@ -40,8 +41,9 @@ class _AddTimeEntryScreenState extends State<AddTimeEntryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            widget.initialTimeEntry == null ? 'Add Time Entry' : 'Edit Time Entry'),
-        backgroundColor: Colors.deepPurple[400],
+            widget.initialTimeEntry == null ? 'Add Time Entry' : 'Edit Time Entry', style: TextStyle(color: Colors.white),),
+        backgroundColor: AppTheme.primaryColor,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
