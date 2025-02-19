@@ -52,8 +52,12 @@ class _HomeScreenState extends State<HomeScreen>
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(color: AppTheme.primaryColor),
-              child: Text('Menu',
-                  style: TextStyle(color: Colors.white, fontSize: 24)),
+              child: Center(
+                child: Text(
+                  'Menu',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
+              ),
             ),
             ListTile(
               leading: Icon(Icons.folder, color: AppTheme.primaryColor),
@@ -201,9 +205,9 @@ class EmptyEntriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Card(
-        color: Colors.white, // Set the background to transparent
-        elevation: 0,
+      child: Container(
+        color: Colors.transparent, // Set the background to transparent
+        margin: EdgeInsets.all(8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
