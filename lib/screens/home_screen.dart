@@ -37,9 +37,9 @@ class _HomeScreenState extends State<HomeScreen>
         foregroundColor: AppTheme.appBarForegroundColor, // Use theme color
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: Colors.white,
+          indicatorColor: AppTheme.accentColor,
           labelColor: Colors.white,
-          unselectedLabelColor: Colors.white70,
+          unselectedLabelColor: Colors.black38,
           tabs: [
             Tab(text: "All Entries"),
             Tab(text: "Grouped by Projects"),
@@ -51,12 +51,12 @@ class _HomeScreenState extends State<HomeScreen>
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              decoration: BoxDecoration(color: Colors.deepPurple),
+              decoration: BoxDecoration(color: AppTheme.primaryColor),
               child: Text('Menu',
                   style: TextStyle(color: Colors.white, fontSize: 24)),
             ),
             ListTile(
-              leading: Icon(Icons.category, color: Colors.deepPurple),
+              leading: Icon(Icons.folder, color: AppTheme.primaryColor),
               title: Text('Projects'),
               onTap: () {
                 Navigator.pop(context); // This closes the drawer
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen>
               },
             ),
             ListTile(
-              leading: Icon(Icons.tag, color: Colors.deepPurple),
+              leading: Icon(Icons.assignment, color: AppTheme.primaryColor),
               title: Text('Tasks'),
               onTap: () {
                 Navigator.pop(context); // This closes the drawer
