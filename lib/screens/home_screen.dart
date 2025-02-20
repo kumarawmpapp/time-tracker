@@ -190,11 +190,10 @@ class _HomeScreenState extends State<HomeScreen>
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    "$projectName - Total Time: \$${total.toStringAsFixed(2)}",
+                    "$projectName",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.orange,
                     ),
                   ),
                 ),
@@ -207,10 +206,8 @@ class _HomeScreenState extends State<HomeScreen>
                   itemBuilder: (context, index) {
                     TimeEntry timeEntry = entry.value[index];
                     return ListTile(
-                      leading:
-                          Icon(Icons.monetization_on, color: Colors.deepPurple),
                       title:
-                          Text("${timeEntry.notes} - \$${timeEntry.totalTime}"),
+                          Text("$projectName"),
                       subtitle: Text(
                           DateFormat('MMM dd, yyyy').format(timeEntry.date)),
                     );
