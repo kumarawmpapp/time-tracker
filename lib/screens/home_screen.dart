@@ -108,6 +108,8 @@ class _HomeScreenState extends State<HomeScreen>
             final timeEntry = provider.entries[index];
             String formattedDate =
                 DateFormat('MMM dd, yyyy').format(timeEntry.date);
+            String projectName =
+                getProjectNameById(context, timeEntry.projectId);
             return Dismissible(
               key: Key(timeEntry.id),
               direction: DismissDirection.endToStart,
@@ -124,10 +126,15 @@ class _HomeScreenState extends State<HomeScreen>
                 color: Colors.purple[50],
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                 child: ListTile(
-                  title: Text(
-                      "${timeEntry.projectId} - ${timeEntry.totalTime} hours"),
-                  subtitle: Text(
-                      '${timeEntry.date.toString()} - Notes: ${timeEntry.notes}'),
+                  title: Text("$projectName - ${timeEntry.totalTime} hours"),
+                  subtitle:
+                      Text('${formattedDate} - Notes: ${timeEntry.notes}'),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete, color: Colors.red),
+                    onPressed: () {
+                      provider.removeTimeEntry(timeEntry.id);
+                    },
+                  ),
                 ),
               ),
             );
@@ -150,8 +157,8 @@ class _HomeScreenState extends State<HomeScreen>
           children: grouped.entries.map((entry) {
             String projectName = getProjectNameById(
                 context, entry.key); // Ensure you implement this function
-            double total = entry.value.fold(
-                0.0, (double prev, TimeEntry element) => prev + element.totalTime);
+            double total = entry.value.fold(0.0,
+                (double prev, TimeEntry element) => prev + element.totalTime);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -177,10 +184,10 @@ class _HomeScreenState extends State<HomeScreen>
                     return ListTile(
                       leading:
                           Icon(Icons.monetization_on, color: Colors.deepPurple),
-                      title: Text(
-                          "${timeEntry.notes} - \$${timeEntry.totalTime}"),
-                      subtitle: Text(DateFormat('MMM dd, yyyy')
-                          .format(timeEntry.date)),
+                      title:
+                          Text("${timeEntry.notes} - \$${timeEntry.totalTime}"),
+                      subtitle: Text(
+                          DateFormat('MMM dd, yyyy').format(timeEntry.date)),
                     );
                   },
                 ),
@@ -224,9 +231,16 @@ class EmptyEntriesView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20), // Add space between items
-            Text('No time entries yet!', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color.fromRGBO(100, 100, 100, 1))),
+            Text('No time entries yet!',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Color.fromRGBO(100, 100, 100, 1))),
             SizedBox(height: 20), // Add space between items
-            Text('Tap the + button to add your first entry.', style: TextStyle(color: Color.fromRGBO(160, 160, 160, 1)),),
+            Text(
+              'Tap the + button to add your first entry.',
+              style: TextStyle(color: Color.fromRGBO(160, 160, 160, 1)),
+            ),
           ],
         ),
       ),
