@@ -181,8 +181,6 @@ class _HomeScreenState extends State<HomeScreen>
         return ListView(
           children: grouped.entries.map((entry) {
             String projectName = provider.getProjectNameById(entry.key); // Use provider method
-            double total = entry.value.fold(0.0,
-                (double prev, TimeEntry element) => prev + element.totalTime);
             return Card(
               elevation: 5, // Set the elevation to 5
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
