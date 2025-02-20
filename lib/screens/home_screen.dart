@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen>
                 child: Icon(Icons.delete, color: Colors.white),
               ),
               child: Card(
-                color: Colors.purple[50],
+                color: AppTheme.backgroundColor,
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                 child: ListTile(
                   title: Column(
@@ -134,15 +134,23 @@ class _HomeScreenState extends State<HomeScreen>
                         "$projectName - $taskName",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10), // Add space between title and subtitle
+                      SizedBox(height: 20), // Add space between title and subtitle
                     ],
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Total Time: ${timeEntry.totalTime} hours"),
-                      Text("Date: $formattedDate"),
-                      Text("Notes: ${timeEntry.notes}"),
+                      Text(
+                        "Total Time: ${timeEntry.totalTime} hours",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        "Date: $formattedDate",
+                      ),
+                      Text(
+                        "Notes: ${timeEntry.notes}",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
                   trailing: IconButton(
