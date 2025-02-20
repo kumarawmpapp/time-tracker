@@ -126,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen>
               child: Card(
                 color: AppTheme.backgroundColor,
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                elevation: 5,
                 child: ListTile(
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
