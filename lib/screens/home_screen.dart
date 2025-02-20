@@ -198,14 +198,8 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                     ),
                   ),
-                  ListView.builder(
-                    physics:
-                        NeverScrollableScrollPhysics(), // to disable scrolling within the inner list view
-                    shrinkWrap:
-                        true, // necessary to integrate a ListView within another ListView
-                    itemCount: entry.value.length,
-                    itemBuilder: (context, index) {
-                      TimeEntry timeEntry = entry.value[index];
+                  Column(
+                    children: entry.value.map((timeEntry) {
                       String taskName = provider.getTaskNameById(timeEntry.taskId);
                       String formattedDate = DateFormat('MMM dd, yyyy').format(timeEntry.date);
                       return Column(
@@ -216,10 +210,9 @@ class _HomeScreenState extends State<HomeScreen>
                               style: TextStyle(fontWeight: FontWeight.w400),
                             ),
                           ),
-                          SizedBox(height: 5), // Add space between items
                         ],
                       );
-                    },
+                    }).toList(),
                   ),
                 ],
               ),
