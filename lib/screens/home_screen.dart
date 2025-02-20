@@ -190,11 +190,14 @@ class _HomeScreenState extends State<HomeScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "$projectName",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: EdgeInsets.all(20), // Add padding of 20 pixels
+                    child: Text(
+                      "$projectName",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   ListView.builder(
@@ -207,11 +210,16 @@ class _HomeScreenState extends State<HomeScreen>
                       TimeEntry timeEntry = entry.value[index];
                       String taskName = provider.getTaskNameById(timeEntry.taskId);
                       String formattedDate = DateFormat('MMM dd, yyyy').format(timeEntry.date);
-                      return ListTile(
-                        title: Text(
-                          " - $taskName: ${timeEntry.totalTime} hours ($formattedDate)",
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
+                      return Column(
+                        children: [
+                          ListTile(
+                            title: Text(
+                              " - $taskName: ${timeEntry.totalTime} hours ($formattedDate)",
+                              style: TextStyle(fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                          SizedBox(height: 5), // Add space between items
+                        ],
                       );
                     },
                   ),
