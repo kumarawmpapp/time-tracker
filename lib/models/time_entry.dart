@@ -27,7 +27,7 @@ class TimeEntry {
     );
   }
 
-  // Convert an Expense instance to a JSON object
+  // Convert an instance to a JSON object
   Map<String, dynamic> toJson() {
     return {
       'id': id,
