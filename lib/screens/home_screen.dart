@@ -183,36 +183,43 @@ class _HomeScreenState extends State<HomeScreen>
             String projectName = provider.getProjectNameById(entry.key); // Use provider method
             double total = entry.value.fold(0.0,
                 (double prev, TimeEntry element) => prev + element.totalTime);
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "$projectName",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+            return Card(
+              elevation: 5, // Set the elevation to 5
+              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              color: AppTheme.backgroundColor, // Set the card color to AppTheme.backgroundColor
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(2.0),
+                    child: Text(
+                      "$projectName",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                ListView.builder(
-                  physics:
-                      NeverScrollableScrollPhysics(), // to disable scrolling within the inner list view
-                  shrinkWrap:
-                      true, // necessary to integrate a ListView within another ListView
-                  itemCount: entry.value.length,
-                  itemBuilder: (context, index) {
-                    TimeEntry timeEntry = entry.value[index];
-                    return ListTile(
-                      title:
-                          Text("$projectName"),
-                      subtitle: Text(
-                          DateFormat('MMM dd, yyyy').format(timeEntry.date)),
-                    );
-                  },
-                ),
-              ],
+                  ListView.builder(
+                    physics:
+                        NeverScrollableScrollPhysics(), // to disable scrolling within the inner list view
+                    shrinkWrap:
+                        true, // necessary to integrate a ListView within another ListView
+                    itemCount: entry.value.length,
+                    itemBuilder: (context, index) {
+                      TimeEntry timeEntry = entry.value[index];
+                      String taskName = provider.getTaskNameById(timeEntry.taskId);
+                      String formattedDate = DateFormat('MMM dd, yyyy').format(timeEntry.date);
+                      return ListTile(
+                        title: Text(
+                          " - $taskName: ${timeEntry.totalTime} hours ($formattedDate)",
+                          style: TextStyle(fontWeight: FontWeight.w400),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             );
           }).toList(),
         );
