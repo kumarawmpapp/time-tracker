@@ -110,6 +110,7 @@ class _HomeScreenState extends State<HomeScreen>
                 DateFormat('MMM dd, yyyy').format(timeEntry.date);
             String projectName =
                 getProjectNameById(context, timeEntry.projectId);
+            String taskName = provider.getTaskNameById(timeEntry.taskId);
             return Dismissible(
               key: Key(timeEntry.id),
               direction: DismissDirection.endToStart,
@@ -126,7 +127,10 @@ class _HomeScreenState extends State<HomeScreen>
                 color: Colors.purple[50],
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                 child: ListTile(
-                  title: Text("$projectName - ${timeEntry.taskId}"),
+                  title: Text(
+                    "$projectName - $taskName",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

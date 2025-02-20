@@ -97,6 +97,12 @@ class TimeEntryProvider with ChangeNotifier {
     }
   }
 
+  // Method to get task name by ID
+  String getTaskNameById(String taskId) {
+    var task = _tasks.firstWhere((task) => task.id == taskId, orElse: () => Task(id: '', name: 'Unknown Task'));
+    return task.name;
+  }
+
   // Delete a task
   void deleteTask(String id) {
     _tasks.removeWhere((task) => task.id == id);
