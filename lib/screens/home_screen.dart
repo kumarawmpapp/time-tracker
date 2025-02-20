@@ -127,9 +127,15 @@ class _HomeScreenState extends State<HomeScreen>
                 color: Colors.purple[50],
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                 child: ListTile(
-                  title: Text(
-                    "$projectName - $taskName",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "$projectName - $taskName",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 10), // Add space between title and subtitle
+                    ],
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
