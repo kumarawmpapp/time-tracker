@@ -103,6 +103,12 @@ class TimeEntryProvider with ChangeNotifier {
     return task.name;
   }
 
+  // Method to get project name by ID
+  String getProjectNameById(String projectId) {
+    var project = _projects.firstWhere((proj) => proj.id == projectId, orElse: () => Project(id: '', name: 'Unknown Project', isDefault: false));
+    return project.name;
+  }
+
   // Delete a task
   void deleteTask(String id) {
     _tasks.removeWhere((task) => task.id == id);

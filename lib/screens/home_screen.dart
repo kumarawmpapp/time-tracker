@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen>
             String formattedDate =
                 DateFormat('MMM dd, yyyy').format(timeEntry.date);
             String projectName =
-                getProjectNameById(context, timeEntry.projectId);
+                provider.getProjectNameById(timeEntry.projectId);
             String taskName = provider.getTaskNameById(timeEntry.taskId);
             return Dismissible(
               key: Key(timeEntry.id),
@@ -180,8 +180,7 @@ class _HomeScreenState extends State<HomeScreen>
         var grouped = groupBy(provider.entries, (TimeEntry e) => e.projectId);
         return ListView(
           children: grouped.entries.map((entry) {
-            String projectName = getProjectNameById(
-                context, entry.key); // Ensure you implement this function
+            String projectName = provider.getProjectNameById(entry.key); // Use provider method
             double total = entry.value.fold(0.0,
                 (double prev, TimeEntry element) => prev + element.totalTime);
             return Column(
@@ -219,14 +218,6 @@ class _HomeScreenState extends State<HomeScreen>
         );
       },
     );
-  }
-
-  // home_screen.dart
-  String getProjectNameById(BuildContext context, String projectId) {
-    var project = Provider.of<TimeEntryProvider>(context, listen: false)
-        .projects
-        .firstWhere((proj) => proj.id == projectId);
-    return project.name;
   }
 }
 
