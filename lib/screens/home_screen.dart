@@ -126,9 +126,15 @@ class _HomeScreenState extends State<HomeScreen>
                 color: Colors.purple[50],
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                 child: ListTile(
-                  title: Text("$projectName - ${timeEntry.totalTime} hours"),
-                  subtitle:
-                      Text('${formattedDate} - Notes: ${timeEntry.notes}'),
+                  title: Text("$projectName - ${timeEntry.taskId}"),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Total Time: ${timeEntry.totalTime} hours"),
+                      Text("Date: $formattedDate"),
+                      Text("Notes: ${timeEntry.notes}"),
+                    ],
+                  ),
                   trailing: IconButton(
                     icon: Icon(Icons.delete, color: Colors.red),
                     onPressed: () {

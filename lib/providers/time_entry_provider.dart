@@ -35,8 +35,9 @@ class TimeEntryProvider with ChangeNotifier {
     // await storage.ready;
     var storedEntries = storage.getItem('timeEntries');
     if (storedEntries != null) {
+      var decodedEntries = jsonDecode(storedEntries) as List;
       _entries = List<TimeEntry>.from(
-        (storedEntries as List).map((item) => TimeEntry.fromJson(item)),
+        decodedEntries.map((item) => TimeEntry.fromJson(item)),
       );
       notifyListeners();
     }
